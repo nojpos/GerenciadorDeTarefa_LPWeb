@@ -1,0 +1,3 @@
+class Tarefa{
+    constructor()
+}
