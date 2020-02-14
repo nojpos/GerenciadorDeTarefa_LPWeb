@@ -4,22 +4,19 @@ class Tarefa{
 
 
 
-
+ 
 
 
 class LStorage{
-    constructor(data, titulo, status) {
-        this.data = data;
-        this.titulo = titulo;
-        this.status = status;
+    constructor() {
         //testes
         window.localStorage.setItem("teste", "aaa");
         window.localStorage.setItem("teste2", "aaa2");
     }
 
     //salvar no localStorage.
-    salvar(){
-        window.localStorage.setItem(this.titulo, {"data": this.data, "titulo": this.titulo, "status": this.status});
+    salvar(data, titulo, status){
+        window.localStorage.setItem(titulo, [data, titulo, status]);
         console.log("task salva localmente.");
     }
 
