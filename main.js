@@ -70,3 +70,29 @@ function removeTask(ele, id=undefined) { //Exlui a task do DOM
     ele.parentElement.parentElement.remove();
     g_tasks.excluir(id);
 }
+
+
+function lerTarefa1(){
+    let tarefa = document.getElementById("tituloTarefa").value
+    console.log(tarefa);
+    a =tarefa.split("em")
+    console.log(a);
+
+    t = new Tarefa(a[1], a[0], "false")
+    console.log(t);
+
+    const userString = JSON.stringify(t);
+
+    console.log(userString)
+
+
+    localStorage.setItem('test',userString);
+    r = localStorage.getItem('test');
+    a = JSON.parse(userString)
+    console.log("R: ", a.date)
+    console.log("R: ", a.title)
+    console.log("R: ", a.status)
+
+    document.getElementById("tituloTarefa").value = ""
+}
+
