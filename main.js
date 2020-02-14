@@ -11,6 +11,12 @@ class LStorage{
         console.log("task salva localmente.");
     }
 
+    //excluir do localStorage.
+    excluir(id){
+        window.localStorage.removeItem(id);
+        console.log(`Task de id: "${id}" removida.`);
+    }
+
     //retorna a tarefa salva localmente.
     getTask(chave){
         return window.localStorage.getItem(chave);
