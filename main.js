@@ -35,6 +35,7 @@ class LStorage{
 
 g_tasks = new LStorage();
 console.log("keys salvas no storage: " + g_tasks.getKeys());
+
 class Tarefa {
     constructor(data, titulo, status) {
         this.date = data;
@@ -64,7 +65,8 @@ function renderTask(data, titulo, status) {
     }
 }
 
-//Função para remover do DOM
-function removeTask(ele) { //Exlui a task do DOM
+//Função para remover do DOM e excluir do localStorage
+function removeTask(ele, id=undefined) { //Exlui a task do DOM
     ele.parentElement.parentElement.remove();
+    g_tasks.excluir(id);
 }
