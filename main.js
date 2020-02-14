@@ -50,3 +50,21 @@ class Tarefa {
         console.log(t1)
     }
 }
+
+//variavel global da estrutura de tarefas
+let tasks = document.querySelectorAll('tbody')[0];
+//Adiciona no DOM as tasks
+function renderTask(data, titulo, status) {
+    //renderiza não completada
+    if(status=="false" || status==false) {
+        tasks.insertAdjacentHTML("afterBegin", `<tr id='itensTabela'><th>${data}</th><td>${titulo}</td><td class='text-right'><button id="btnConcluir" type="button" class="btn btn-success">Conluir</button>
+        <button id="btnExcluir" type="button" class="btn btn-danger" onClick="removeTask(this)">Excluir</button></td></td></tr>`);
+    } else { //renderiza os completados tracejado e sem o botão concluir.
+        tasks.insertAdjacentHTML("afterBegin", `<tr id='itensTabela'><th><strike>${data}</strike></th><td><strike>${titulo}</strike></td><td class='text-right'> <button id="btnExcluir" type="button" class="btn btn-danger" onClick="removeTask(this)">Excluir</button></td></td></tr>`);
+    }
+}
+
+//Função para remover do DOM
+function removeTask(ele) { //Exlui a task do DOM
+    ele.parentElement.parentElement.parentElement.removeChild(ele.parentElement.parentElement);
+}
