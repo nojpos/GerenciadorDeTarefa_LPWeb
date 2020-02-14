@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-class Tarefa{
-    constructor() {}
-}
-
-
-
- 
-
-
 class LStorage{
     constructor() {
         //testes
@@ -39,7 +29,6 @@ class LStorage{
 
 g_tasks = new LStorage();
 console.log("keys salvas no storage: " + g_tasks.getKeys());
-=======
 class Tarefa {
     constructor(data, titulo, status) {
         this.date = data;
@@ -55,4 +44,3 @@ class Tarefa {
         console.log(t1)
     }
 }
->>>>>>> 4769bfbc4966a26d61472a5d3e1c6786668c82f7
