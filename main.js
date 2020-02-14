@@ -66,5 +66,5 @@ function renderTask(data, titulo, status) {
 
 //Função para remover do DOM
 function removeTask(ele) { //Exlui a task do DOM
-    ele.parentElement.parentElement.parentElement.removeChild(ele.parentElement.parentElement);
+    ele.parentElement.parentElement.remove();
 }
