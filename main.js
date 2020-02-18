@@ -63,7 +63,7 @@ function renderTask(id, data, titulo, status) {
         tasks.insertAdjacentHTML("afterBegin", `<tr id='itensTabela'><th>${data}</th><td>${titulo}</td><td class='text-right'><button id="btnConcluir" type="button" onClick="concluiTask(this)" name="${id}" class="btn btn-success">Conluir</button>
         <button id="btnExcluir" type="button" class="btn btn-danger" onClick="removeTask(this)" name="${id}">Excluir</button></td></td></tr>`);
     } else { //renderiza os completados tracejado e sem o botão concluir.
-        tasks.insertAdjacentHTML("afterEnd", `<tr id='itensTabela'><th><strike>${data}</strike></th><td><strike>${titulo}</strike></td><td class='text-right'></td></td></tr>`);
+        tasks.insertAdjacentHTML("afterEnd", `<tr id='itensTabela'><th class="completo">${data}</th><td class="completo"><strike>${titulo}</strike></td><td class='text-right completo'>Concluído!</td></td></tr>`);
     }
 }
 
