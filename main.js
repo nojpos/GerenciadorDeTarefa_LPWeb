@@ -90,27 +90,23 @@ function random() {
     return Math.floor(Math.random()*1024);
 }
 
+function formatDate(date){
+    return date.replace(/\/[0-9]*$/,"");
+}
+
 
 function lerTarefa(){
     let tarefa = document.getElementById("tituloTarefa").value
-    console.log(tarefa);
     a =tarefa.split("em")
-    console.log(a);
-
-    t = new Tarefa(a[1], a[0], "false")
-    console.log(t);
+    t = new Tarefa(formatDate(a[1]), a[0], "false")
 
     const userString = JSON.stringify(t);
 
-    console.log(userString)
     
     let tarefa_id = random();
 
     localStorage.setItem(tarefa_id,userString);
     a = JSON.parse(userString)
-    console.log("R: ", a.date)
-    console.log("R: ", a.title)
-    console.log("R: ", a.status)
 
     let tarefa_atual = JSON.parse(localStorage.getItem(tarefa_id));
     renderTask(tarefa_id, tarefa_atual["date"], tarefa_atual["title"], tarefa_atual["status"]);
@@ -120,7 +116,6 @@ function lerTarefa(){
 
 //renderiza todas as tasks salvas localmente
 for(task in g_tasks.getKeys()) {
-    console.log(localStorage.getItem(g_tasks.getKeys()[task]));
     let tarefa = JSON.parse(localStorage.getItem(g_tasks.getKeys()[task]));
     renderTask(g_tasks.getKeys()[task], tarefa["date"], tarefa["title"], tarefa["status"]);
 }
