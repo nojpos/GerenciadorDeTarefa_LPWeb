@@ -63,7 +63,7 @@ function renderTask(id, data, titulo, status) {
     }
 }
 
-//Função para remover do DOM e excluir do localStorage
+//função para remover do DOM e excluir do localStorage
 function removeTask(ele, id = undefined) { //Exlui a task do DOM
     if (id == undefined) {
         g_tasks.excluir(ele['name']);
