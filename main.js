@@ -92,21 +92,38 @@ function formatDate(date) {
     return date.replace(/\/[0-9]*$/, "");
 }
 
+//regex para testar formatação
+function testaFormato(testar) {
+    let te = /em\s[0-9]*\/[0-9]*\/[0-9]{4}$/;
+    if(te.test(testar)==false){
+        return undefined;
+    }else {
+        let converted = {'date':'', 'title':''};
+        converted['title'] = testar.slice(0, te.exec(testar).index);
+        converted['date'] = testar.slice(te.exec(testar).index+3, testar.length-5);
+        return converted;
+    }
+}
+
 //ler a tarefa, popula um objeto de Tarefa, adiciona no LocalStorage, chama a função renderTask e limpa o campo input
 function lerTarefa() {
-    let tarefa = document.getElementById("tituloTarefa").value
-    listaTarefa = tarefa.split("em")
-    objetoTarefa = new Tarefa(formatDate(listaTarefa[1]), listaTarefa[0], "false")
+    let tarefa = document.getElementById("tituloTarefa").value;
+    if(testaFormato(tarefa)==undefined){
+        document.getElementById("tituloTarefa").value = "Formato inválido.";
+    } else {
+        tarefa = testaFormato(tarefa);
+        objetoTarefa = new Tarefa(tarefa['date'], tarefa['title'], "false");
 
-    const userString = JSON.stringify(objetoTarefa);
-    let tarefa_id = random();
+        const userString = JSON.stringify(objetoTarefa);
+        let tarefa_id = random();
 
-    localStorage.setItem(tarefa_id, userString);
+        localStorage.setItem(tarefa_id, userString);
 
-    let tarefa_atual = JSON.parse(localStorage.getItem(tarefa_id));
-    renderTask(tarefa_id, tarefa_atual["date"], tarefa_atual["title"], tarefa_atual["status"]);
+        let tarefa_atual = JSON.parse(localStorage.getItem(tarefa_id));
+        renderTask(tarefa_id, tarefa_atual["date"], tarefa_atual["title"], tarefa_atual["status"]);
 
-    document.getElementById("tituloTarefa").value = ""
+        document.getElementById("tituloTarefa").value = ""
+    }
 }
 
 //renderiza todas as tasks salvas localmente
